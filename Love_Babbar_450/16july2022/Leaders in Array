@@ -1,0 +1,21 @@
+// Question number 3 from Test2 coding ninjas cpp introduction
+void Leaders(int* arr,int len)
+{
+	/* Don't write main().
+	 * Don't read input, it is passed as function argument.
+	 * Print your output exactly in the same format as shown. 
+	 * Don't print any extra line.
+	*/
+    bool isLeader = true;	//This will tell if the current element is a leader or not
+    for( int i=0; i<len; i++ ){	//This will help in traversing the whole array
+        isLeader = true;
+        for( int j=i; j<len; j++ ){
+            if( arr[j]>arr[i] ){
+                isLeader = false;
+                break;
+            }
+        }
+        if(isLeader)
+            cout<<arr[i]<<" ";	//Printing the ith element if it is leader
+    }
+}
