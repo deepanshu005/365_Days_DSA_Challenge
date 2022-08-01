@@ -1,3 +1,4 @@
+// CPP DSA CN Test 1
 bool splitArray(int *input, int size, int start=0, int ls=0, int rs=0 ){
     if(start==size)	// Base case
     	return ls==rs;	// Return true if ls==rs else false
