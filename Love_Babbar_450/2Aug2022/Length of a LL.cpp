@@ -1,4 +1,4 @@
-// CPP DSA CN Lec 
+// CPP DSA CN Lec-8
 /****************************************************************
  
     Following is the class structure of the Node class:
