@@ -1,4 +1,4 @@
-CPP DSA Lec 11
+// CPP DSA CN Lec 11 continued
 /************************************************************
  
     Following is the structure for the TreeNode class
@@ -21,15 +21,18 @@ CPP DSA Lec 11
     };
 
 ************************************************************/
-#include<climits>
-TreeNode<int>* maxDataNode(TreeNode<int>* root) {
-    if( root==NULL )	// edge case
-        return root;
-    TreeNode<int>* deep = root; //Assuming our root node to be max of all and deep node will hold the max of all nodes which we will be returning
+
+int getLargeNodeCount(TreeNode<int>* root, int x) {
+    if( root==NULL )
+        return 0;
+    int count = 0;
+
+// Making head recursive calls
     for( int i=0; i<root->children.size(); i++ ){
-    	TreeNode<int>* raj = maxDataNode(root->children[i]);// raj will contain the max data node of its of tree
-        if( deep->data <= raj->data )
-            deep = raj;
+        count += getLargeNodeCount(root->children[i],x);                               
     }
-    return deep;
+    if( root->data > x)
+	    return count+1;
+    else 
+    	return count;
 }
