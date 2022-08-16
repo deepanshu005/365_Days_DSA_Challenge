@@ -1,6 +1,5 @@
 //CPP DSA Cn Lec 13
 /**********************************************************
-
 	Following is the Binary Tree Node class structure
 
 	template <typename T>
@@ -19,17 +18,40 @@
 
 ***********************************************************/
 
-void elementsInRangeK1K2(BinaryTreeNode<int>* root, int k1, int k2) {
-	if( root==NULL )		return;
-  
-    if( root->data > k1 )
-        elementsInRangeK1K2( root->left, k1, k2 );
-    	
-    
-    if( root->data >=k1 && root->data <=k2 ){
-        cout<<root->data<<" ";
+#include <limits.h>
+
+bool helper(BinaryTreeNode<int>* root, int max = INT_MAX, int min = INT_MIN){
+    if(root == NULL){
+        return true;
     }
-    if( root->data < k2 )
-        elementsInRangeK1K2( root->right, k1, k2 );
     
+    if(root->data > max || root->data < min){
+        return false;
+    }
+    bool leftAns = helper(root->left, root->data, min);
+    bool rightAns = helper(root->right, max, root->data);
+    return leftAns && rightAns;
 }
+
+bool isBST(BinaryTreeNode<int> *root) {
+	// Write your code here
+    if(root == NULL){
+        return false;
+    }
+ 	
+    return helper(root);
+}
+
+// bool isBST(BinaryTreeNode<int> *root) {
+// 	if( root==NULL )	return	false;
+    
+//     if( root->left==NULL && root->data < root->right->data )		return isBST(root->right);
+//     if( root->right==NULL && root->data >root->left->data )		return isBST(root->left);
+    
+//     if(root->left != NULL && root->right != NULL && root->data >root->left->data && root->data <root->right->data){
+//         bool left = isBST(root->left);
+//         bool right = isBST(root->right);
+//         return left && right;
+//     }
+//     return false;
+// }
