@@ -1,4 +1,5 @@
 // CPP DSA Love Babbar 450(GFG)
+// here there were two prblms one was min swaps and the other was min adjacent swap, and here this is the solution for min adjacent swaps
 int minimumNumberOfSwaps(string S){
         int brkt = 0, cnt = 0;
         int n = S.size();
