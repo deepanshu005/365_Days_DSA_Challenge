@@ -1,27 +1,32 @@
-// Result is not correct because I thought there will be only k free candies after buying one or more candies
+// This is the correct answer
 //{ Driver Code Starts
 #include<bits/stdc++.h> 
 using namespace std; 
 
 // } Driver Code Ends
-class Solution
-{
+
+class Solution{
+// there will be atmost k candies free if we buy one candy and if we buy 2 candies then atmost (2*k) candies will be free
+// In previous approach I thought there will be only k candies are free whether we buy 1 or many candies
 public:
     vector<int> candyStore(int candies[], int N, int k){
         sort( candies, candies+N );
-        int mini = candies[0];
-        int maxi = candies[N-1];
-        if( k < N-1 ){ // if k would be greater than or equal to (N-1) then we will be buying only one candy and other will be free
-            int i = 1;
-            while( i<N-k ){//for minimum, we will buy one candy from starting and last k candies will be free and the remaining candies we have to buy forecefully
-                mini = mini + candies[i];
-                i++;
-            }
-            i = N-2;
-            while( i>=k ){//for maximum, we will buy one candy from ending and starting k candies will be free and the remaining candies we have to buy forecefully
-                maxi = maxi + candies[i];
-                i--;
-            }
+        int mini = 0;
+        int maxi = 0;
+        int i = 0;
+        int j = N-1;
+        while( i<=j ){//for minimum, we will buy one candy from starting and last k candies will be free and the remaining candies we have to buy forecefully
+            mini = mini + candies[i];
+            i++;
+            j = j-k;
+        }
+        reverse( candies, candies+N );// just reverses the order of candies
+        i = 0;
+        j = N-1;
+        while( i<=j ){//for maximum, we will buy one candy from ending and starting k candies will be free and the remaining candies we have to buy forecefully
+            maxi = maxi + candies[i];
+            i++;
+            j = j-k;
         }
         return { mini, maxi };
     }
