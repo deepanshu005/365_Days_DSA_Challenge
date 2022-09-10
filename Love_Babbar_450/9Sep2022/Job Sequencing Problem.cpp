@@ -24,36 +24,37 @@ struct Job
 };
 */
 
+//Greedy approach here is we will try doing our jobs as nearest possible to the deadline
 class Solution 
 {
-    static bool cmp( pair<int,int> a, pair<int,int> b ){
-        return ( a.first > b.first );
-    }
+    static bool cmp( Job a, Job b ){
+        return a.profit > b.profit;
+    }//Means if profit of b is more then return false to the swap fxn saying that its not true it needs to be swapped
     public:
-    vector<int> JobScheduling(Job arr[], int n){ 
-        vector< pair<int,int> > vec;//profit, deadline
-        int Max = INT_MIN;
+    vector<int> JobScheduling(Job arr[], int n) { 
+        sort( arr, arr+n, cmp );
+        int Max = arr[0].dead;
         for( int i=0; i<n; i++ ){
-            vec.push_back( make_pair(arr[i].profit, arr[i].dead) );
-            if( arr[i].dead > Max )
-                Max = arr[i].dead; 
+            if( arr[i].dead>Max )
+                Max = arr[i].dead;
         }
-        sort( vec.begin(), vec.end(), cmp );
-        int array[Max+1] = {};
+        int seq[Max+1];
+        for( int i=0; i<=Max; i++ )
+            seq[i] = -1;
+        
         int count = 0;
-        int pro = 0;
-        for( int i=0; i<n; i++ ){// to traverse in vector
-            for( int j = vec[i].second; j>0; j--){
-                if( array[j] == 0){
-                    array[j] = i;
+        int profit = 0;
+        for( int i=0; i<n; i++ ){
+            for( int j=arr[i].dead; j>0; j-- ){
+                if( seq[j] == -1 ){
+                    seq[j] = i;
                     count++;
-                    pro += arr[i].profit;
+                    profit += arr[i].profit;
                     break;
                 }
             }
         }
-        
-        return {count,pro};    
+        return {count, profit};
     } 
 };
 
