@@ -24,6 +24,15 @@ class Solution {
                     vis[i] = 1;// marking the node visited
                 }
             }
+            /*  replacing auto it with i
+            int n = adj[node].size();
+            for( int i=0; i<n; i++ ){//to traverse the vector corresponding to the node
+                if( vis[adj[node][i]] == 0 ){//Means we have'nt visited it yet
+                    q.push(adj[node][i]);//pushing the node which we had'nt visited yet
+                    vis[adj[node][i]] = 1;// marking the node visited
+                }
+            }
+          */
         }
         return bfs;
     }
