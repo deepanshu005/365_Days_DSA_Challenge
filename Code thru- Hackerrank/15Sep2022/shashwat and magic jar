@@ -1,0 +1,33 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);   
+    int t;
+    cin>>t;
+    vector<int> vec;
+    while( t>0 ){
+        long long X;
+        cin>>X;
+        int result = 0;
+        while( X ){
+            result += X%3;
+            X = X/3;
+            
+        }
+        vec.push_back( result );
+        
+        
+        t--;
+    }
+    for( auto x : vec )
+        cout<<x<<"\n";
+    return 0;
+}
