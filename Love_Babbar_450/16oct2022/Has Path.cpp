@@ -1,4 +1,9 @@
 // CPP DSA CN Lec 20 Love Babbar 450
+/* Given an undirected graph G(V, E) and two vertices v1 and v2 (as integers), check if there exists any path between them or not. Print true if the path exists and false otherwise.
+Note:
+1. V is the number of vertices present in graph G and vertices are numbered from 0 to V-1. 
+2. E is the number of edges present in graph G.
+ */
 #include <iostream>
 using namespace std;
 
