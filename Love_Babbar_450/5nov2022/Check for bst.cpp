@@ -130,6 +130,8 @@ int main() {
     Solution ob;
     if(ob.isBST(root)) 
         cout<<"1\n";
+      else
+        cout<<"0\n";
    }
    return 0;
 }
