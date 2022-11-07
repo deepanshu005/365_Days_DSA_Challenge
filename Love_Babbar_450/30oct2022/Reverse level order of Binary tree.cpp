@@ -118,6 +118,7 @@ vector<int> reverseLevelOrder(Node *root){
     if( root==NULL )
         return {};
     vector<int> vec;
+    stack<int> st;
     queue<Node*> qu;
     qu.push(root);
     
@@ -131,6 +132,10 @@ vector<int> reverseLevelOrder(Node *root){
         qu.pop();    
         
     }
-    reverse( vec.begin(), vec.end() );
+    while( !st.empty() ){
+        vec.push_back(st.top());
+        st.pop();
+    }
+//     reverse( vec.begin(), vec.end() );
     return vec;
 }
