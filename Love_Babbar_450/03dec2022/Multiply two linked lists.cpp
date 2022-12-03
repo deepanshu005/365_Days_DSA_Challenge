@@ -141,23 +141,14 @@ and returns their product*/
 
 /*You are required to complete this method*/
 long long  multiplyTwoLists (Node* l1, Node* l2){
-    if( !l1 or !l2 )
-        return 0;
-    const unsigned int M = 1000000007;
-    string x = "";
+    long long x=0, y=0;
     while( l1 ){
-        x = x + to_string(l1->data);
+        x = (x*10 + l1->data)%1000000007;
         l1 = l1->next;
     }
-    string y = "";
     while( l2 ){
-        y = y + to_string(l2->data);
+        y = (y*10 + l2->data)%1000000007;
         l2 = l2->next;
     }
-    long long a = stol(x);
-    long long b = stol(y);
-    a = a % M;
-    b = b % M;
-    return (a*b)%M;
-  
+    return (x*y)%1000000007;
 }
