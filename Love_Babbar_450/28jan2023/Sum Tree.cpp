@@ -107,7 +107,7 @@ class Solution
         int b = healer(root->right);// right ko bolo apne subtree ka sum leke aaye
         
         int sum = root->data;
-        if( a+b != sum );// jo sum aaya usko root->data mein daal denge
+        if( a+b != sum )// jo sum aaya usko root->data mein daal denge
             flag = false;
         return sum + a + b;// and total return kr denge
     }
